@@ -34,9 +34,21 @@
 
                     <div class="col-md-8 ">
                         <div class="row">
-                            <div class="col-12 border border-white m-1 bg-dark">Seach and uplaod button</div>
+                            <div class="col-12 border border-white m-1 bg-dark">
+                                <div class="row">
+                                <div class="col-md-2 mt-2 mb-2">
+                                        <button class="btn btn-secondary" >Upload</button>
+                                </div>
+                                <div class="col-md-10 mt-2 mb-2">
+                                       
+                                        <input type="text" class="form-control" id="basic-url"  ></input>
+                                     
+                        </div>
+                                <!-- Seach and uplaod button -->
+                            </div>
 
                         </div>
+                    </div>
                         <div class="row">
                             <div class="col-12 border border-white m-1 bg-dark">
 
@@ -163,14 +175,23 @@
                 </div>
                 <div class="row">
                     <div class="col-12 border border-white m-1 bg-dark">
-                            <div id="waveform"></div>
+                        <div class="row">
+                            <div class="col-2">
+                                    <div class="controls">
+                                            <button class="btn btn-primary button-play" data-action="play" >Play / Pause</button>
+                                            </div>
+                            </div>
+
+                            <div class="col-8"> <div id="waveform"></div></div>
+                        </div>   
+                        
+                        
+                       
                         <!-- <audio controls>
                             Add mp3 source if original source isnt supported
                         </audio> -->
                         <!-- AudioPlayerRow -->
-                        <div class="controls">
-                        <button class="btn btn-primary" data-action="play">Play / Pause</button>
-                        </div>
+                       
                     </div>
                 </div>
             </div>

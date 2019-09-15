@@ -69,3 +69,7 @@ input[type=range][orient=vertical]
     height: 175px;
     padding: 0 5px;
 }
+.button-play{
+  height: 100%;
+  width: 100%;
+}
