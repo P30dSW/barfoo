@@ -2,6 +2,7 @@
 <html>
 
 <head>
+        <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
@@ -9,12 +10,13 @@
 </head>
 
 <body>
-    <div class="container h-100">
-        <div class="row   vertical-center ">
-            <div class="col-12 bg-info ">
+
+    <div class="container h-100 ">
+        <div class="row  vertical-center ">
+            <div class="col-12 text-light">
                 <div class="row ">
                     <!-- <div class="col-12 border border-dark">.col-9</div> -->
-                    <div class="col-4 border border-dark">
+                    <div class="col-4 border border-white bg-dark">
                         <div class="d-flex justify-content-center">
 
 
@@ -27,25 +29,60 @@
 
                     <div class="col-8 ">
                         <div class="row">
-                            <div class="col-12 border border-dark m-1">Seach and uplaod button</div>
+                            <div class="col-12 border border-white m-1 bg-dark">Seach and uplaod button</div>
 
                         </div>
                         <div class="row">
-                            <div class="col-12 border border-dark m-1">Music table</div>
+                            <div class="col-12 border border-white m-1 bg-dark">
+                                    <table class="table table-hover text-light">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">Title</th>
+                                                <th scope="col">Artist</th>
+                                                <th scope="col">Ablum</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>No Surprises</td>
+                                                      <td>Radiohead</td>
+                                                      <td>OK Computer</td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>Jacob</td>
+                                                      <td>Thornton</td>
+                                                      <td>@fat</td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>Larry</td>
+                                                      <td>the Bird</td>
+                                                      <td>@twitter</td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                <!-- Music table -->
+                            </div>
 
                         </div>
                         <div class="row">
-                            <div class="col-12 border border-dark m-1">Equalizer</div>
+                            <div class="col-12 border border-white m-1 bg-dark">Equalizer</div>
 
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 border border-dark m-1 ">AudioPlayerRow</div>
+                    <div class="col-12 border border-white m-1 bg-dark">
+                        <audio controls>
+                            Add mp3 source if original source isnt supported
+                        </audio>
+                        <!-- AudioPlayerRow -->
+                    </div>
                 </div>
             </div>
+            
         </div>
     </div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
