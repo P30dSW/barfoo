@@ -20,8 +20,8 @@
                     <!-- <div class="col-12 border border-dark">.col-9</div> -->
                     <div class="col-md-4 border border-white bg-dark">
                         <div class="d-flex justify-content-center">
-                            <figure class="mt-2">
-                                <img id="coverImage" src="../resources/okcomputer.jpg" width="300" height="300">
+                            <figure class="mt-2" style="max-width: 100% !important">
+                                <img id="coverImage" src="../resources/okcomputer.jpg" style="max-width: 100% !important">
                                 <figcaption class="text-center">OK Computer
                                     </br>No Surprises - Radiohead
                                     </br>1997
@@ -100,29 +100,31 @@
                                 </table>
                                 <!-- Music table -->
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="col-md-12 border border-white m-1 bg-dark">
                                 <form>
-                                    <div class="d-flex justify-content-center">
-
+                                    <div class="mt-1">
                                             <div class="form-group">
                                                     <label for="exampleInputEmail1">LOW</label>
                                     <input id="lowRange" type="range"/>
                                             </div>
+                                        
                                             <div class="form-group">
                                                     <label for="exampleInputEmail1">LOW MID</label>
                                     <input id="lowMidRange" type="range"/>
                                     </div>
+                                
                                     <div class="form-group">
                                             <label for="exampleInputEmail1">HIGH MID</label>
                                     <input id="highMidRange" type="range" />
                                     </div>
+                                
                                     <div class="form-group">
                                             <label for="exampleInputEmail1">HIGH</label>
                                     <input id="highRange" type="range" />
                                     </div>
+                                
                                     </div>
                                     </form>
                                 </form>
@@ -135,14 +137,21 @@
                 </div>
                 <div class="row">
                     <div class="col-12 border border-white m-1 bg-dark">
-                        <div class="row">
-                            <div class="col-2">
-                                    <div class="controls">
-                                            <button class="btn btn-primary button-play" data-action="play" >Play / Pause</button>
-                                            </div>
+                        <div class="row ">
+                            <div class="col-1">
+                                <div class="">
+                                        
+                                                <img class="align-middle justify-content-between" src="../resources/play-button.png" style="width: 100% !important"></img>
+                                            
+                                    <!-- <div class="controls">
+                                        
+                                        
+                                        <button class="btn btn-primary button-play" data-action="play" >Play / Pause</button>
+                                    </div> -->
+                                </div>
                             </div>
 
-                            <div class="col-8"> <div id="waveform"></div></div>
+                            <div class="col-11"> <div id="waveform"></div></div>
                         </div>   
                         
                         
