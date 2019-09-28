@@ -1,11 +1,31 @@
 <?php   
-session_start();
-session_regenerate_id(true);
-
+//No more session needed, because the application isn't based to a usersystem anymore
 if(isset($_POST['submit'])){
-//TODO:
+    echo "<h1>dscsd</h1>";
+    $valid_extension = array('.mp3', '.mp4', '.wav', 'flac');
+    $file_extension = strtolower( strrchr( $_FILES["file"]["name"], "." ) );
+    if( in_array( $file_extension, $valid_extension )){
+    //TODO: Check for size
 
-}
+
+        $newAudioName = uniqid('',true);
+        $newDicretory = "../resources/audioHeap/" . $newAudioName . "." . $file_extension;
+        move_uploaded_file($_FILES["file"]['tmp_name'],$newDicretory);
+       
+    }else{
+        //TODO: Error message
+    }
+   
+       
+    }
+    // if($file['name'] != ""){
+    //   $isFile = true;
+    //   echo "TRUE";
+    // }else{
+    //     echo "FALSE";
+    // }
+
+  
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,11 +66,16 @@ if(isset($_POST['submit'])){
                             <div class="col-12 border border-white m-1 bg-dark">
                                 <div class="row">
                                 <div class="col-md-2 mt-2 mb-2">
-                                        <button class="btn btn-secondary" >Upload</button>
+                                    <form id="uploadForm"  action="index.php" Method="POST" enctype="multipart/form-data">
+                                        <input id="submitButton" name="submit" type="submit">
+
+                                        <input type="file" name="file" class="form-control-file" id="uploadButton">
+                                        </form>
+                                        <!-- <button type="file" class="btn btn-secondary" id="uploadButton">Upload</button> -->
                                 </div>
                                 <div class="col-md-10 mt-2 mb-2">
                                        
-                                        <input type="text" class="form-control" id="basic-url"  ></input>
+                                        <input type="text" class="form-control" id="basic-url"  >
                                      
                         </div>
                                 <!-- Seach and uplaod button -->
@@ -177,9 +202,10 @@ if(isset($_POST['submit'])){
     </div>
 </body>
 <script src="https://unpkg.com/wavesurfer.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>

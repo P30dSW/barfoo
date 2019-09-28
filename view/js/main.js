@@ -13,6 +13,13 @@ $('.controls .btn').on('click', function(){
       case 'play':
         wavesurfer.playPause();
         break;
-      
     }
   });
+
+
+//TODO: Submit through UploadButton doesn't work, because the $_POST Array doesn't get a value
+  // $("#uploadButton").change( function(){
+  //   console.log("yes!");
+  //   $("#uploadForm").submit();
+    
+  // });
