@@ -1,19 +1,17 @@
 <?php   
 //No more session needed, because the application isn't based to a usersystem anymore
 if(isset($_POST['submit'])){
-    echo "<h1>dscsd</h1>";
-    $valid_extension = array('.mp3', '.mp4', '.wav', 'flac');
+    $valid_extension = array('.mp3', '.mp4', '.wav', '.flac');
     $file_extension = strtolower( strrchr( $_FILES["file"]["name"], "." ) );
     if( in_array( $file_extension, $valid_extension )){
     //TODO: Check for size
-
-
         $newAudioName = uniqid('',true);
-        $newDicretory = "../resources/audioHeap/" . $newAudioName . "." . $file_extension;
+        $newDicretory = "../resources/audioHeap/" . $newAudioName  . $file_extension;
         move_uploaded_file($_FILES["file"]['tmp_name'],$newDicretory);
        
     }else{
         //TODO: Error message
+        
     }
    
        
