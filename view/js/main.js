@@ -1,3 +1,5 @@
+var jsmediatags = window.jsmediatags;
+
 var wavesurfer = WaveSurfer.create({
     container: '#waveform',
     waveColor: 'white',
@@ -16,7 +18,14 @@ $('.controls .btn').on('click', function(){
     }
   });
 
-
+  jsmediatags.read("file:///../../resources/audioHeap/5d8f3c96e95de503796365.flac", {
+    onSuccess: function(tag) {
+      console.log(tag);
+    },
+    onError: function(error) {
+      console.log(error);
+    }
+  });
 //TODO: Submit through UploadButton doesn't work, because the $_POST Array doesn't get a value
   // $("#uploadButton").change( function(){
   //   console.log("yes!");

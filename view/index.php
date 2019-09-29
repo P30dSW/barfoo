@@ -8,7 +8,9 @@ if(isset($_POST['submit'])){
         $newAudioName = uniqid('',true);
         $newDicretory = "../resources/audioHeap/" . $newAudioName  . $file_extension;
         move_uploaded_file($_FILES["file"]['tmp_name'],$newDicretory);
-       
+       //Converting file for a mp3 version
+       echo 'sox ' . $newDicretory . ' ' . "../resources/audioHeap/" . $newAudioName  . '.mp3';
+       exec('sox ' . $newDicretory . ' ' . "../resources/audioHeap/" . $newAudioName  . '.mp3');
     }else{
         //TODO: Error message
         
@@ -210,6 +212,7 @@ if(isset($_POST['submit'])){
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.0/jsmediatags.js" integrity="sha256-j6y0xjM8ul3l0lp/rnayNHS2Im+Xaqip0iOrr+uijus=" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
 
 </html>
