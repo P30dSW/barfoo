@@ -13,7 +13,7 @@ background-color: black;
 
 .bg-image {
   /* The image used */
-  background-image: url("../../resources/okcomputer.jpg");
+  background-color: black;
 
   /* Add the blur effect */
   position: fixed;

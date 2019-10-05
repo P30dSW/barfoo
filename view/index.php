@@ -1,31 +1,43 @@
-<?php   
+<?php  
+ini_set('max_execution_time', 300);  
 //No more session needed, because the application isn't based to a usersystem anymore
 if(isset($_POST['submit'])){
     $valid_extension = array('.mp3', '.mp4', '.wav', '.flac');
     $file_extension = strtolower( strrchr( $_FILES["file"]["name"], "." ) );
     if( in_array( $file_extension, $valid_extension )){
     //TODO: Check for size
-        $newAudioName = uniqid('',true);
-        $newDicretory = "../resources/audioHeap/" . $newAudioName  . $file_extension;
+
+    //TODO:Check for name (if preexists)
+
+    //TODO:Chek for name (if it has spaces)
+        $newAudioName = uniqid('',false);
+        
+        $newDicretory = "../resources/audioHeap/" . $_FILES["file"]['name'];
         move_uploaded_file($_FILES["file"]['tmp_name'],$newDicretory);
        //Converting file for a mp3 version
-       echo 'sox ' . $newDicretory . ' ' . "../resources/audioHeap/" . $newAudioName  . '.mp3';
-       exec('sox ' . $newDicretory . ' ' . "../resources/audioHeap/" . $newAudioName  . '.mp3');
+       preg_match('/^([^.]+)/',$_FILES["file"]['name'], $fileNameWithOutExtension);
+       $path_parts = pathinfo($newDicretory);
+       exec('sox ' . $newDicretory . ' ' . "../resources/audioHeap/" . $path_parts['filename'] . '.mp3');
     }else{
-        //TODO: Error message
+        //TODO: Error message (file type not supported)
         
     }
    
        
     }
-    // if($file['name'] != ""){
-    //   $isFile = true;
-    //   echo "TRUE";
-    // }else{
-    //     echo "FALSE";
-    // }
-
-  
+//Creating the list of avaliable music files
+$avaliableFiles[] = array();
+$files = scandir('../resources/audioHeap/');
+foreach($files as $file) {
+    $addFileToList = false;
+    $fileData = pathinfo('../resources/audioHeap/'. $file);
+    
+            $avaliableFiles[] = $fileData['filename'];
+}
+$avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
+ unset($avaliableFilesUnique[0]);
+ unset($avaliableFilesUnique[1]);
+ unset($avaliableFilesUnique[2]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,7 +62,7 @@ if(isset($_POST['submit'])){
                     <div class="col-md-4 border border-white bg-dark">
                         <div class="d-flex justify-content-center">
                             <figure class="mt-2" style="max-width: 100% !important">
-                                <img id="coverImage" src="../resources/okcomputer.jpg" style="max-width: 100% !important">
+                                <img id="coverImage" src="../resources/coverImage.jpg" style="max-width: 100% !important">
                                 <figcaption class="text-center">OK Computer
                                     </br>No Surprises - Radiohead
                                     </br>1997
@@ -85,51 +97,20 @@ if(isset($_POST['submit'])){
                     </div>
                         <div class="row">
                             <div class="col-12 border border-white m-1 bg-dark">
-
                                 <table class="table-fixed table table-hover table-borderless text-light">
                                     <thead>
                                         <tr>
-                                            <th class="col-4" scope="col">Title</th>
-                                            <th class="col-4" scope="col">Artist</th>
-                                            <th class="col-4" scope="col">Ablum</th>
+                                            <th class="col-12" scope="col">Title Name</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="col-4">No Surprises</td>
-                                            <td class="col-4">Radiohead</td>
-                                            <td class="col-4">OK Computer</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-4">Computer Love</td>
-                                            <td class="col-4">Kraftwerk</td>
-                                            <td class="col-4">Computer World</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-4">Army of Me</td>
-                                            <td class="col-4">Björk</td>
-                                            <td class="col-4">Post</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-4">Loser</td>
-                                            <td class="col-4">Beck</td>
-                                            <td class="col-4">Mellow Gold</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-4">Blue Monday</td>
-                                            <td class="col-4">New Order</td>
-                                            <td class="col-4">12" Blue Monday</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-4">Teardrop</td>
-                                            <td class="col-4">Massive Attack</td>
-                                            <td class="col-4">Mezzanine</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-4">Rabbit in your headlight</td>
-                                            <td class="col-4">Unkle</td>
-                                            <td class="col-4">Psyence Fiction</td>
-                                         </tr>
+                                       
+                                        <?php
+                                            foreach($avaliableFilesUnique as $file) {
+                                echo '<tr><td class="col-12" >'. $file . '</td></tr>'; 
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                                 <!-- Music table -->
