@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
        
     }
 //Creating the list of avaliable music files
-$avaliableFiles[] = array();
+$avaliableFiles = [];
 $files = scandir('../resources/audioHeap/');
 foreach($files as $file) {
     $addFileToList = false;
@@ -37,7 +37,7 @@ foreach($files as $file) {
 $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
  unset($avaliableFilesUnique[0]);
  unset($avaliableFilesUnique[1]);
- unset($avaliableFilesUnique[2]);
+ 
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,12 +61,9 @@ $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
                     <!-- <div class="col-12 border border-dark">.col-9</div> -->
                     <div class="col-md-4 border border-white bg-dark">
                         <div class="d-flex justify-content-center">
-                            <figure class="mt-2" style="max-width: 100% !important">
-                                <img id="coverImage" src="../resources/coverImage.jpg" style="max-width: 100% !important">
-                                <figcaption class="text-center">OK Computer
-                                    </br>No Surprises - Radiohead
-                                    </br>1997
-                                    </br>FLAC - 789kbps
+                            <figure class="mt-2" >
+                                <img id="coverImage" src="../resources/coverImage.jpg" >
+                                <figcaption class="text-center" id="coverFigCaption">
                                 </figcaption>
                             </figure>
 
@@ -87,7 +84,7 @@ $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
                                 </div>
                                 <div class="col-md-10 mt-2 mb-2">
                                        
-                                        <input type="text" class="form-control" id="basic-url"  >
+                                        <input type="text" class="form-control" id="searchInput"  >
                                      
                         </div>
                                 <!-- Seach and uplaod button -->
@@ -104,13 +101,9 @@ $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
                                             
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="mainTable">
                                        
-                                        <?php
-                                            foreach($avaliableFilesUnique as $file) {
-                                echo '<tr><td class="col-12" >'. $file . '</td></tr>'; 
-                                            }
-                                        ?>
+                                    
                                     </tbody>
                                 </table>
                                 <!-- Music table -->
@@ -155,8 +148,8 @@ $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
                         <div class="row ">
                             <div class="col-1">
                                 <div class="">
-                                        
-                                                <img class="align-middle justify-content-between" src="../resources/play-button.png" style="width: 100% !important"></img>
+                                        <!-- TODO:FINISH PLAY PAUSE BUTTON -->
+                                               <a class="playButton"> <img class="align-middle justify-content-between " src="../resources/play-button.png" style="width: 100% !important"></img></a>
                                             
                                     <!-- <div class="controls">
                                         
@@ -167,6 +160,9 @@ $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
                             </div>
 
                             <div class="col-11"> <div id="waveform"></div></div>
+                            <audio id="mediaAudio" >
+                                        </audio>
+
                         </div>   
                         
                         
