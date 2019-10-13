@@ -1,26 +1,42 @@
 <?php  
 ini_set('max_execution_time', 300);  
 //No more session needed, because the application isn't based to a usersystem anymore
+$hasSpaces = false;
+$alreadyHasAudioFile = false;
+$isNotaAudioFile = false;
+
 if(isset($_POST['submit'])){
-    $valid_extension = array('.mp3', '.mp4', '.wav', '.flac');
+    $valid_extension = array('.mp3', '.wav', '.flac');
     $file_extension = strtolower( strrchr( $_FILES["file"]["name"], "." ) );
     if( in_array( $file_extension, $valid_extension )){
-    //TODO: Check for size
 
     //TODO:Check for name (if preexists)
+    $files = scandir('../resources/audioHeap/');
+    preg_match('/^([^.]+)/',$_FILES["file"]['name'], $fileNameWithOutExtension);
+        
+foreach($files as $file) {
+    if(pathinfo($file)['filename'] ==  $fileNameWithOutExtension[0]){
+        $alreadyHasAudioFile = true;
+    }
 
+}
     //TODO:Chek for name (if it has spaces)
+    if ( strpos($_FILES["file"]['name'], ' ') > 0 ){
+        $hasSpaces = true;
+    }
+    if($alreadyHasAudioFile == false && $hasSpaces == false){
         $newAudioName = uniqid('',false);
         
         $newDicretory = "../resources/audioHeap/" . $_FILES["file"]['name'];
         move_uploaded_file($_FILES["file"]['tmp_name'],$newDicretory);
        //Converting file for a mp3 version
-       preg_match('/^([^.]+)/',$_FILES["file"]['name'], $fileNameWithOutExtension);
        $path_parts = pathinfo($newDicretory);
+       
        exec('sox ' . $newDicretory . ' ' . "../resources/audioHeap/" . $path_parts['filename'] . '.mp3');
+    }
     }else{
         //TODO: Error message (file type not supported)
-        
+        $isNotaAudioFile = true;
     }
    
        
@@ -146,24 +162,28 @@ $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
                 <div class="row">
                     <div class="col-12 border border-white m-1 bg-dark">
                         <div class="row ">
-                            <div class="col-1">
-                                <div class="">
-                                        <!-- TODO:FINISH PLAY PAUSE BUTTON -->
-                                               <a class="playButton"> <img class="align-middle justify-content-between " src="../resources/play-button.png" style="width: 100% !important"></img></a>
-                                            
-                                    <!-- <div class="controls">
-                                        
-                                        
-                                        <button class="btn btn-primary button-play" data-action="play" >Play / Pause</button>
-                                    </div> -->
-                                </div>
-                            </div>
+                           
 
-                            <div class="col-11"> <div id="waveform"></div></div>
+                            <div class="col-12"> <div id="waveform"></div></div>
                             <audio id="mediaAudio" >
                                         </audio>
 
-                        </div>   
+                        </div>
+                        <div class="row">
+                        <div class="col-12">
+                               
+                               <!-- TODO:FINISH PLAY PAUSE BUTTON -->
+                                      <!-- <a class="playButton"> <img class="align-middle justify-content-between " src="../resources/play-button.png" style="width: 100% !important"></img></a> -->
+                                      <button type="button" style="max-width: 100% !important" class="btn btn-dark playButton">Play/Pause</button>
+                           <!-- <div class="controls">
+                               
+                               
+                               <button class="btn btn-primary button-play" data-action="play" >Play / Pause</button>
+                           </div> -->
+                       
+                   </div>
+                        
+</div>
                         
                         
                        
@@ -177,6 +197,35 @@ $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
             </div>
         </div>
     </div>
+<?php
+if($alreadyHasAudioFile == true){
+echo" <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+There is already a file with the same name.
+<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+  <span aria-hidden='true'>&times;</span>
+</button>
+</div>";
+}
+if($hasSpaces == true){
+    echo" <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+The File has a space. Please select another one without spaces.
+<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+  <span aria-hidden='true'>&times;</span>
+</button>
+</div>";
+}
+if($isNotaAudioFile == true){
+    echo" <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+    The File is not a Audiofile. Please select a audiofile.
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span aria-hidden='true'>&times;</span>
+    </button>
+    </div>";
+}
+
+?>
+
+
 </body>
 <script src="https://unpkg.com/wavesurfer.js"></script>
 <script

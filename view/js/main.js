@@ -75,7 +75,7 @@ $(document).on('click','.audiofile' , function(){
   var audio = $('#mediaAudio');
   audio.empty();
   var source= document.createElement('source');
-  var pattern = /(flac|wav|mp3|aac)/i;
+  var pattern = /(flac|wav|mp3)/i;
   var extension = mainSrc.match(pattern);
   
   
@@ -126,6 +126,7 @@ function adjustAudioList(){
             $('#mainTable').append("<tr><td class='audiofile col-12' mainSource='../resources/audioHeap/" + searchResultArray[i][0] + "." + searchResultArray[i][1] +"' adjustedSource='../resources/audioHeap/" + searchResultArray[i][0] + ".mp3' >" + searchResultArray[i][0] + "</td><tr>" );
           });
           }else{
+            console.log(json);
             $.each(json , function(i) {
               $('#mainTable').append("<tr><td class='audiofile col-12' mainSource='../resources/audioHeap/" + json[i][0] + "." + json[i][1] +"' adjustedSource='../resources/audioHeap/" + json[i][0] + ".mp3' >" + json[i][0] + "</td><tr>" );
             });
