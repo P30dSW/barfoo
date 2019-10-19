@@ -56,7 +56,7 @@ $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
  
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="de" >
 
 <head>
      <meta charset="UTF-8">
@@ -65,7 +65,7 @@ $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
-
+    <title>Barfoo</title>
 </head>
 
 <body>
@@ -78,7 +78,7 @@ $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
                     <div class="col-md-4 border border-white bg-dark">
                         <div class="d-flex justify-content-center">
                             <figure class="mt-2" >
-                                <img id="coverImage" src="../resources/coverImage.jpg" >
+                                <img id="coverImage" src="../resources/coverImage.jpg" alt="Standard Coverimage">
                                 <figcaption class="text-center" id="coverFigCaption">
                                 </figcaption>
                             </figure>
@@ -130,30 +130,27 @@ $avaliableFilesUnique = array_unique($avaliableFiles, SORT_REGULAR);
                                 <form>
                                     <div class="mt-1">
                                             <div class="form-group">
-                                                    <label for="exampleInputEmail1">LOW</label>
+                                                    <label  >LOW</label>
                                     <input id="lowRange" type="range"/>
                                             </div>
                                         
                                             <div class="form-group">
-                                                    <label for="exampleInputEmail1">LOW MID</label>
+                                                    <label  >LOW MID</label>
                                     <input id="lowMidRange" type="range"/>
                                     </div>
                                 
                                     <div class="form-group">
-                                            <label for="exampleInputEmail1">HIGH MID</label>
+                                            <label  >HIGH MID</label>
                                     <input id="highMidRange" type="range" />
                                     </div>
                                 
                                     <div class="form-group">
-                                            <label for="exampleInputEmail1">HIGH</label>
+                                            <label  >HIGH</label>
                                     <input id="highRange" type="range" />
                                     </div>
                                 
                                     </div>
                                     </form>
-                                </form>
-                                <!-- Equalizer -->
-
                             </div>
 
                         </div>
@@ -225,9 +222,7 @@ if($isNotaAudioFile == true){
 
 ?>
 
-
-</body>
-<script src="https://unpkg.com/wavesurfer.js"></script>
+<script src="https://unpkg.com/wavesurfer.js" ></script>
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -238,7 +233,7 @@ if($isNotaAudioFile == true){
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.0/jsmediatags.js" integrity="sha256-j6y0xjM8ul3l0lp/rnayNHS2Im+Xaqip0iOrr+uijus=" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
+</body>
 
 </html>

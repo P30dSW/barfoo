@@ -75,8 +75,8 @@ $(document).on('click','.audiofile' , function(){
   var audio = $('#mediaAudio');
   audio.empty();
   var source= document.createElement('source');
+  var source2 = document.createElement('source'); 
   var pattern = /(flac|wav|mp3)/i;
-  var extension = mainSrc.match(pattern);
   
   
   audio.attr('src',mainSrc);
@@ -84,6 +84,8 @@ $(document).on('click','.audiofile' , function(){
   source.type= 'audio/mpeg';
   source.src= adjustedSrc;
   audio.append(source);
+  source2.src = mainSrc;
+  audio.append(source2);
   
   var mediaElt = document.querySelector('audio');
   console.log(mediaElt);
