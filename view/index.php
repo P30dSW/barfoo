@@ -205,7 +205,7 @@ There is already a file with the same name.
 }
 if($hasSpaces == true){
     echo" <div class='alert alert-warning alert-dismissible fade show' role='alert'>
-The File has a space. Please select another one without spaces.
+The file has a space. Please select another one without spaces.
 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
   <span aria-hidden='true'>&times;</span>
 </button>
@@ -213,7 +213,7 @@ The File has a space. Please select another one without spaces.
 }
 if($isNotaAudioFile == true){
     echo" <div class='alert alert-warning alert-dismissible fade show' role='alert'>
-    The File is not a Audiofile. Please select a audiofile.
+    The file is not a audiofile nor a supported audiofile. Please select a audiofile.
     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>&times;</span>
     </button>
